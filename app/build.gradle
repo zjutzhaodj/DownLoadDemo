@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.mobile.demo.demoapplication"
+        minSdkVersion 16
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.material:material:1.3.0'
+
+
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //支持Gson解析json数据
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //支持RxJava返回类型
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.11.0") {
+        exclude group: "com.android.support"
+    }
+
+    //refresh
+    implementation 'androidx.appcompat:appcompat:1.0.0'                 //必须 1.0.0 以上
+
+    implementation  'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    implementation  'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+    implementation  'io.github.scwang90:refresh-header-radar:2.0.5'       //雷达刷新头
+    implementation  'io.github.scwang90:refresh-header-falsify:2.0.5'     //虚拟刷新头
+    implementation  'io.github.scwang90:refresh-header-material:2.0.5'    //谷歌刷新头
+    implementation  'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
+    implementation  'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
+    implementation  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+
+
+    implementation "com.android.support:support-fragment:28.0.0"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
